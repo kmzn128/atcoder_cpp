@@ -24,4 +24,5 @@ int main(void){
         }
         counter++;
     }
+    return 0;
 }
