@@ -25,7 +25,7 @@ VI Main(int N, VI &a, VI &b)
         }
         bottoms.insert({b[i], a[i]});
     }
-    return ans;
+ho    return ans;
 }
 
 int main(void){
