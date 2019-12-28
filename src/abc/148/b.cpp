@@ -6,26 +6,21 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 
 
-int Main(int a, int b)
+string Main(int N, string S, string T)
 {
-    if(a == 1) {
-        if(b == 2) return 3;
-        else return 2;
+    string ans;
+    REP(i, N) {
+        ans.push_back(S[i]);
+        ans.push_back(T[i]);
     }
-    if(a == 2) {
-        if(b == 1) return 3;
-        else return 1;
-    }
-    if(a == 3) {
-        if(b == 1) return 2;
-        else return 1;
-    }
+    return ans;
 }
 
 int main(void){
-    int A, B;
-    cin >> A;
-    cin >> B;
-    cout << Main(A, B) << endl;
+    int N;
+    cin >> N;
+    string S, T;
+    cin >> S >> T;
+    cout << Main(N, S, T) << endl;
     return 0;
 }
