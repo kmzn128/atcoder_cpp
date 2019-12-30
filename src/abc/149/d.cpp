@@ -6,6 +6,7 @@ typedef vector<int> VI;
 typedef vector<VI> VVI;
 typedef vector<bool> VB;
 
+
 int Main(int N, int K, int R, int S, int P, string T)
 {
     int ans = 0;
