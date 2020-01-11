@@ -10,38 +10,46 @@ typedef long long ll;
 template<class T,class U>bool chmin(T&a,const U&b){if(a<=b)return false;a=b;return true;}
 template<class T,class U>bool chmax(T&a,const U&b){if(a>=b)return false;a=b;return true;}
 
-VI factorial(int n) {
-    VI ans(n, 1);
-    REP2(i, 1, n) {
-        ans[i] = ans[i-1] * (i+1);
+ll lcd(ll A, ll B)
+{
+    if(!B) return A;
+    return lcd(B, A%B);
+}
+
+ll gcm(ll A, ll B) {
+    return (A*B)/lcd(A,B);
+}
+
+ll calc_gcm(int N, VI &V) {
+    ll l = (ll)V[0];
+    REP2(i, 1, N) {
+        ll n = gcm(l, V[i]);
+        l = n;
+    }
+    return l;
+}
+
+ll num_div2(ll n) {
+    ll ans = 0LL;
+    if(n%2LL == 0) {
+        n/2LL;
+        ans++;
     }
     return ans;
 }
 
-int calc_index(int N, VI &A, VI &f) {
-    int ans = 0;
-    VI digits(N);
-    REP(i, N) digits[i] = i+1;
-    REP(i, N-1) {
-        auto it = find(ALL(digits), A[i]);
-        int d = distance(digits.begin(), it);
-        ans += d * f[N-2-i];
-        digits.erase(it);
-    }
-    return ans;
-}
 
-int Main(int N, int M, VI &A)
+ll Main(int N, int M, VI &A)
 {
     int ans = 0;
     REP(i, N) A[i] /= 2;
-    set<int> AS(ALL(A));
-    int cm = 1;
-    int size_AS = AS.size();
-    VI ASV(ALL(AS));
-    REP(i, size_AS) cm *= ASV[i];
-    if(!(M/cm)) return 0;
-    else return (M/cm-1)/2+1;
+    // ll t = num_div2(A[0]);
+    // REP2(i, 1, N) {
+    //     if(num_div2(A[i]) != t) return 0;
+    // }
+    ll cm = calc_gcm(N, A);
+    if(!((ll)M/(ll)cm)) return 0;
+    else return (ll)((((ll)M/(ll)cm)+1LL)/2LL);
 }
 
 

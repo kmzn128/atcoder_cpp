@@ -8,7 +8,7 @@ typedef long long ll;
 
 ll Euclidean(ll A, ll B)
 {
-    if(A < B) swap(A, B);
+    // if(A < B) swap(A, B);
     ll r = A % B;
     while(r > 0) {
         A = B;
